@@ -27,7 +27,7 @@ public class Scale {
     @Column(name = "scale_formula")
     private String formula;
 
-    public Chord(String name, String formula) {
+    public Scale(String name, String formula) {
         this.name = name;
         this.formula = formula;
     }

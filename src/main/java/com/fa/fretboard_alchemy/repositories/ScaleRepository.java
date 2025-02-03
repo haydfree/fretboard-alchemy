@@ -1,9 +1,9 @@
 package com.fa.fretboard_alchemy.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.fa.fretboard_alchemy.entities.Chord;
+import com.fa.fretboard_alchemy.entities.Scale;
 
-public interface ChordRepository extends JpaRepository<Chord, Long> {
+public interface ScaleRepository extends JpaRepository<Scale, Long> {
     
-    Chord findByName(String name);
+    Scale findByName(String name);
 }

@@ -25,7 +25,7 @@ public class Note {
     @Column(name = "note_name")
     private String name;
 
-    public Chord(String name) {
+    public Note(String name) {
         this.name = name;
     }
 }

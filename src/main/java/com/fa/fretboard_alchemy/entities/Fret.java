@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 // Lombok imports
 import lombok.Data;
@@ -19,13 +21,10 @@ import lombok.NoArgsConstructor;
 public class Fret {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "idx")
+    @Min(0) @Max(24)
     private int idx;
 
-    public Fret(Integer idx) {
+    public Fret(int idx) {
         this.idx = idx;
     }
 }
