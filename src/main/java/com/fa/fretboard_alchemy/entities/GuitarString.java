@@ -1,18 +1,8 @@
 package com.fa.fretboard_alchemy.entities;
 
-// JPA imports
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-
-// Lombok imports
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -21,10 +11,27 @@ import lombok.NoArgsConstructor;
 public class GuitarString {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToMany
+    private Note[] notes;
+
+    @ManyToMany
+    private Scale[] scales;
+
+    @ManyToMany
+    private Fret[] frets;
+
+    @ManyToMany
+    private Chord[] chords;
+
     @Min(1) @Max(6)
+    @Column(name = "guitar_string_idx")
     private int idx;
 
     public GuitarString(int idx) {
         this.idx = idx;
     }
+
 }

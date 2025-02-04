@@ -1,16 +1,7 @@
 package com.fa.fretboard_alchemy.entities;
 
-// JPA imports
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-
-// Lombok imports
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data @NoArgsConstructor
 @Entity
@@ -23,12 +14,25 @@ public class Scale {
 
     @Column(name = "scale_name")
     private String name;
+    
+    @ManyToMany
+    private Note[] notes;
 
-    @Column(name = "scale_formula")
-    private String formula;
+    @ManyToMany
+    private GuitarString[] guitarStrings;
 
-    public Scale(String name, String formula) {
-        this.name = name;
-        this.formula = formula;
+    @ManyToMany
+    private Fret[] frets;
+
+    @OneToMany
+    private Chord[] chords;
+
+    private String key;
+    private String scaleType;
+
+    public Scale(String key, String scaleType) {
+        this.key = key;
+        this.scaleType = scaleType;
+        this.name = key + " " + scaleType;
     }
 }
