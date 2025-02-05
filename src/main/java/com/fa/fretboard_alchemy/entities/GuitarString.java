@@ -3,6 +3,7 @@ package com.fa.fretboard_alchemy.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -15,16 +16,16 @@ public class GuitarString {
     private Long id;
 
     @ManyToMany
-    private Note[] notes;
+    private List<Note> notes = new ArrayList<>();
 
     @ManyToMany
-    private Scale[] scales;
+    private List<Scale> scales = new ArrayList<>();
 
     @ManyToMany
-    private Fret[] frets;
+    private List<Fret> frets = new ArrayList<>();
 
     @ManyToMany
-    private Chord[] chords;
+    private List<Chord> chords = new ArrayList<>();
 
     @Min(1) @Max(6)
     @Column(name = "guitar_string_idx")

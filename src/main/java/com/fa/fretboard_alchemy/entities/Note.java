@@ -2,6 +2,7 @@ package com.fa.fretboard_alchemy.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -17,16 +18,16 @@ public class Note {
     private String name; 
 
     @ManyToMany
-    private Scale[] scales;
+    private List<Scale> scales = new ArrayList<>();
 
     @ManyToMany
-    private GuitarString[] guitarStrings;
+    private List<GuitarString> guitarStrings = new ArrayList<>();
 
     @ManyToMany
-    private Fret[] frets;
+    private List<Fret> frets = new ArrayList<>();
 
     @ManyToMany
-    private Chord[] chords;
+    private List<Chord> chords = new ArrayList<>();
 
     public Note(String name) {
         this.name = name;

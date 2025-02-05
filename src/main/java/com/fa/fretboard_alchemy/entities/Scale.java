@@ -2,6 +2,7 @@ package com.fa.fretboard_alchemy.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.*;
 
 @Data @NoArgsConstructor
 @Entity
@@ -16,16 +17,16 @@ public class Scale {
     private String name;
     
     @ManyToMany
-    private Note[] notes;
+    private List<Note> notes = new ArrayList<>();
 
     @ManyToMany
-    private GuitarString[] guitarStrings;
+    private List<GuitarString> guitarStrings = new ArrayList<>();
 
     @ManyToMany
-    private Fret[] frets;
+    private List<Fret> frets = new ArrayList<>();
 
     @OneToMany
-    private Chord[] chords;
+    private List<Chord> chords = new ArrayList<>();
 
     private String key;
     private String scaleType;
